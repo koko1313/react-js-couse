@@ -26,7 +26,7 @@ class QuantityInput extends Component {
             <div className="input-group-prepend">
                 <button className="btn btn-outline-success" type="button" onClick={this.decrementQuantity}><i className="fa fa-minus"></i></button>
             </div>
-            <input type="text" className="form-control text-center" value={this.state.quantity}/>
+            <input readOnly type="text" className="form-control text-center" value={this.state.quantity}/>
             <div className="input-group-append">
                 <button className="btn btn-outline-success" type="button" onClick={this.incrementQuantity}><i className="fa fa-plus"></i></button>
             </div>
