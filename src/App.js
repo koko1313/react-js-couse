@@ -28,15 +28,35 @@ const Layout = props => (
     </>
 );
 
+const routes = [
+    {
+        path: '/',
+        exact: true,
+        main: () => <Layout>
+            <FunctionalComponent/>
+        </Layout>
+    },
+    {
+        path: '/gallery',
+        exact: false,
+        main: () => <Layout>
+            <ClassComponent/>
+        </Layout>
+    }
+];
+
+const getRoutes = () => {
+    return routes.map((route, index) => {
+        return <Route key={index} exact={route.exact} path={route.path}>
+            {route.main}
+        </Route>;
+    });
+}
+
 function App() {
     return <Router>
         <Switch>
-            <Route exact path = "/">
-                <FunctionalComponent title="myTitle" description="dec.. here"></FunctionalComponent>
-            </Route>
-            <Route path = "/class">
-                <ClassComponent></ClassComponent>
-            </Route>
+            {getRoutes()}
         </Switch>
     </Router>
 }
