@@ -23,7 +23,9 @@ const Layout = props => (
     // root element, колкото да не гърми react, все едно да сложим <div> </div>
     <>
         <Header/>
-        {props.children}
+        <div className="container mt-5">
+            {props.children}
+        </div>
         <Footer/>
     </>
 );

@@ -6,13 +6,11 @@ import {
     NavbarBrand,
     Nav,
     NavItem,
-    NavLink,
-    UncontrolledDropdown,
-    DropdownToggle,
-    DropdownMenu,
-    DropdownItem,
-    NavbarText
+    NavLink
 } from 'reactstrap';
+
+import {NavLink as RRNavLink} from 'react-router-dom';
+import Container from "../../../node_modules/reactstrap/lib/Container";
 
 class Header extends Component {
     
@@ -31,40 +29,22 @@ class Header extends Component {
     }
 
     render() {
-        return <div>
-            <Navbar color="light" light expand="md">
-            <NavbarBrand href="/">reactstrap</NavbarBrand>
-            <NavbarToggler onClick={this.toggleIsOpen} />
-            <Collapse isOpen={this.state.isOpen} navbar>
-                <Nav className="mr-auto" navbar>
-                    <NavItem>
-                        <NavLink href="/components/">Components</NavLink>
-                    </NavItem>
-                    <NavItem>
-                        <NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
-                    </NavItem>
-                    <UncontrolledDropdown nav inNavbar>
-                        <DropdownToggle nav caret>
-                            Options
-                        </DropdownToggle>
-                        <DropdownMenu right>
-                            <DropdownItem>
-                                Option 1
-                            </DropdownItem>
-                            <DropdownItem>
-                                Option 2
-                            </DropdownItem>
-                            <DropdownItem divider />
-                            <DropdownItem>
-                                Reset
-                            </DropdownItem>
-                        </DropdownMenu>
-                    </UncontrolledDropdown>
-                </Nav>
-                <NavbarText>Simple Text</NavbarText>
-            </Collapse>
-            </Navbar>
-        </div>
+        return <Navbar color="light" light expand="md">
+            <Container>
+                <NavbarBrand href="/">ST 2020</NavbarBrand>
+                <NavbarToggler onClick={this.toggleIsOpen} />
+                <Collapse isOpen={this.state.isOpen} navbar>
+                    <Nav className="mr-auto" navbar>
+                        <NavItem>
+                            <NavLink tag={RRNavLink} exact to="/" activeClassName="active">Home</NavLink>
+                        </NavItem>
+                        <NavItem>
+                            <NavLink tag={RRNavLink} exact to="/gallery" activeClassName="active">Gallery</NavLink>
+                        </NavItem>
+                    </Nav>
+                </Collapse>
+            </Container>
+        </Navbar>
     }
 
 }
