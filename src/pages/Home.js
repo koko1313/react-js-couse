@@ -1,17 +1,23 @@
 import React, {Component} from "react";
 import QuantityInput from "../components/quantityInput";
-import ListItem from "../components/itemList";
+import ItemList from "../components/itemList";
 
 class Home extends Component {
 
     render() {
         return <div className="row">
-            <div className="col-md-8">
-                <ListItem/>
+            <div className="card">
+                <div className="card-body">
+                    <ItemList/>
+                </div>
             </div>
             <div className="col">
-                <QuantityInput/>
-                <QuantityInput/>
+                <div className="card">
+                    <div className="card-body">
+                        <QuantityInput/>
+                        <QuantityInput/>
+                    </div>
+                </div>
             </div>
         </div>
     }

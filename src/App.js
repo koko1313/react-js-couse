@@ -3,7 +3,6 @@ import FunctionalComponent from './components/FunctionalComponent';
 import ClassComponent from './components/ClassComponent';
 import ReduxComponent from './components/ReduxComponent';
 import Header from './components/header/Header';
-import Footer from './components/footer/Footer';
 import Home from './pages/Home';
 
 import { createStore, applyMiddleware } from "redux";
@@ -14,8 +13,7 @@ import thunk from 'redux-thunk';
 import {
     BrowserRouter as Router,
     Switch,
-    Route,
-    Link
+    Route
 } from "react-router-dom";
 
 const store = createStore(reducers, applyMiddleware(thunk));
@@ -27,7 +25,6 @@ const Layout = props => (
         <div className="container mt-5">
             {props.children}
         </div>
-        <Footer/>
     </>
 );
 

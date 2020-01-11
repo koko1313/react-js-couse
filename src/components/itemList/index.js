@@ -50,7 +50,7 @@ class ItemList extends Component {
 
     render() {
         return <>
-            <div className="input-group my-2">
+            <div className="input-group mb-2">
                 <input type="text" className="form-control" value={this.state.itemLabel} onChange={this.handleChange}/>
                 <div className="input-group-append">
                     <button className="btn btn-outline-success" type="button" onClick={this.addItem}><i className="fa fa-plus"></i></button>
