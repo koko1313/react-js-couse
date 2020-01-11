@@ -8,6 +8,7 @@ class Home extends Component {
             <div className="col-md-8"></div>
             <div className="col">
                 <QuantityInput/>
+                <QuantityInput/>
             </div>
         </div>
     }
