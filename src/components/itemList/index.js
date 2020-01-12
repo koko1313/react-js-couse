@@ -29,7 +29,7 @@ class ItemList extends Component {
         const itemList = this.state.itemList;
 
         itemList.forEach((item, index) => {
-            if(item.label.indexOf(search) != -1) {
+            if(item.label.indexOf(search) !== -1) {
                 filteredList.push({
                     label: item.label,
                     index

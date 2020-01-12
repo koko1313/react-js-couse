@@ -3,7 +3,6 @@ import {
     Collapse,
     Navbar,
     NavbarToggler,
-    NavbarBrand,
     Nav,
     NavItem,
     NavLink
@@ -40,7 +39,7 @@ class Header extends Component {
                 </NavLink>
                 <NavbarToggler onClick={this.toggleIsOpen} />
                 <Collapse isOpen={this.state.isOpen} navbar>
-                    <Nav className="mr-auto" navbar>
+                    <Nav className="ml-auto" navbar>
                         <NavItem>
                             <NavLink tag={RRNavLink} exact to="/" activeClassName="active">Home</NavLink>
                         </NavItem>

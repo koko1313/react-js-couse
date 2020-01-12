@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import QuantityInput from "../components/quantityInput";
 import ItemList from "../components/itemList";
+import ProductsList from "../components/productsList";
 
 class Home extends Component {
 
@@ -24,7 +25,7 @@ class Home extends Component {
             <div className="col">
                 <div className="card">
                     <div className="card-body">
-                        
+                        <ProductsList/>
                     </div>
                 </div>
             </div>
