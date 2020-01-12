@@ -91,7 +91,14 @@ class ItemList extends Component {
         let items = this.state.filteredList;
 
         if(!this.state.itemList.length) {
-            return <span>Няма добавени неща</span>
+            return <div className="alert alert-secondary">
+                Няма добавени неща
+            </div>
+        }
+        if(!items.length && this.state.search) {
+            return <div className="alert alert-warning">
+                Няма намерени резултати
+            </div>
         }
         return items.map((item, index) => {
             //return <li key={index} className="list-group-item">{item.label}</li>
