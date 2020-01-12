@@ -1,3 +1,10 @@
 .remove-list-item {
     cursor: pointer;
 }
+.favorite-movie {
+    cursor: pointer;
+    /* и ако има клас active */
+    &.active {
+        color: theme-color("action");
+    }
+}
