@@ -7,7 +7,32 @@ class ItemList extends Component {
         super(props);
         this.state = {
             itemLabel: "",
-            itemList: []
+            search: "",
+            itemList: [],
+            filteredList: []
+        }
+    }
+
+    handleSearchChange = (e) => {
+        const search = e.target.value;
+
+        let filteredList = this.state.itemList;
+
+        if(search) {
+            filteredList = filteredList.filter( item => {
+                return item.label.indexOf(search) != -1;
+            });
+        }
+
+        this.setState({
+            search,
+            filteredList
+        });
+    }
+
+    handleKeyPress = (e) => {
+        if(e.key === 'Enter'){
+            this.addItem();
         }
     }
 
@@ -26,8 +51,17 @@ class ItemList extends Component {
         itemList.push(item);
 
         this.setState({
-            itemList, // когато и стойността и ключа са еднакви, може да го напишем и само веднъж
+            itemList, // когато и стойността и ключа са еднакви, може да го напишем и само веднъж, а не отделно ключ: стойност
             itemLabel: ""
+        });
+    }
+
+    removeItem = (index) => {
+        let itemList = this.state.itemList;
+        itemList.splice(index, 1);
+
+        this.setState({
+            itemList
         });
     }
 
@@ -38,23 +72,38 @@ class ItemList extends Component {
     }
 
     getListItems = () => {
-        const items = this.state.itemList;
+        let items = this.state.itemList;
+
+        if(this.state.search) {
+            items = this.state.filteredList;
+        }
+
         if(!this.state.itemList.length) {
             return <span>Няма добавени неща</span>
         }
         return items.map((item, index) => {
             //return <li key={index} className="list-group-item">{item.label}</li>
-            return <Item key={index} title={item.label}/>
+            return <Item 
+                key={index} 
+                label={item.label}
+                removeItem={ () => {
+                    this.removeItem(index);
+                }}
+                />
         });
     }
 
     render() {
         return <>
             <div className="input-group mb-2">
-                <input type="text" className="form-control" value={this.state.itemLabel} onChange={this.handleChange}/>
+                <input type="text" className="form-control" placeholder="Add ..." value={this.state.itemLabel} onChange={this.handleChange} onKeyPress={this.handleKeyPress}/>
                 <div className="input-group-append">
                     <button className="btn btn-outline-success" type="button" onClick={this.addItem}><i className="fa fa-plus"></i></button>
                 </div>
+            </div>
+
+            <div className="input-group mb-2">
+                <input type="text" className="form-control" placeholder="Search ..." value={this.state.search} onChange={this.handleSearchChange}/>
             </div>
 
             <ul className="list-group mt-3">
