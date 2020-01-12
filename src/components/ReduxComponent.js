@@ -16,14 +16,20 @@ class ReduxComponent extends Component {
         } else {
             this.props.addFavoriteMovie(movie);
         }
-        console.log(this.props.favoriteMovies);
+    }
+
+    getActiveClass = (movie) => {
+        if(this.props.favoriteMovies.indexOf(movie) !== -1) {
+            return "active";
+        }
+        return "";
     }
 
     getMoviesList = () => {
         const movieList = this.props.movies.map((movie, index) => {
             return <li className="list-group-item d-flex justify-content-between" key={movie.id}>
                 <span>
-                    <i className="fa fa-star mr-3 favorite-movie" 
+                    <i className={"fa fa-star mr-3 favorite-movie " + this.getActiveClass(movie)} 
                         onClick={() => {
                             this.toggleFavotiteMovie(movie);
                         }}></i> 
