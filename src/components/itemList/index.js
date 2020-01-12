@@ -16,16 +16,28 @@ class ItemList extends Component {
     handleSearchChange = (e) => {
         const search = e.target.value;
 
-        let filteredList = this.state.itemList;
+        this.setState({
+            search
+        }, () => {
+            this.updateFilteredList();
+        });
+    }
 
-        if(search) {
-            filteredList = filteredList.filter( item => {
-                return item.label.indexOf(search) != -1;
-            });
-        }
+    updateFilteredList = () => {
+        let filteredList = [];
+        const search = this.state.search;
+        const itemList = this.state.itemList;
+
+        itemList.forEach((item, index) => {
+            if(item.label.indexOf(search) != -1) {
+                filteredList.push({
+                    label: item.label,
+                    index
+                });
+            }
+        });
 
         this.setState({
-            search,
             filteredList
         });
     }
@@ -53,6 +65,8 @@ class ItemList extends Component {
         this.setState({
             itemList, // когато и стойността и ключа са еднакви, може да го напишем и само веднъж, а не отделно ключ: стойност
             itemLabel: ""
+        }, () => {
+            this.updateFilteredList();
         });
     }
 
@@ -62,6 +76,8 @@ class ItemList extends Component {
 
         this.setState({
             itemList
+        }, () => {
+            this.updateFilteredList();
         });
     }
 
@@ -72,11 +88,7 @@ class ItemList extends Component {
     }
 
     getListItems = () => {
-        let items = this.state.itemList;
-
-        if(this.state.search) {
-            items = this.state.filteredList;
-        }
+        let items = this.state.filteredList;
 
         if(!this.state.itemList.length) {
             return <span>Няма добавени неща</span>
@@ -87,7 +99,7 @@ class ItemList extends Component {
                 key={index} 
                 label={item.label}
                 removeItem={ () => {
-                    this.removeItem(index);
+                    this.removeItem(item.index);
                 }}
                 />
         });

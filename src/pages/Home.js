@@ -6,9 +6,11 @@ class Home extends Component {
 
     render() {
         return <div className="row">
-            <div className="card">
-                <div className="card-body">
-                    <ItemList/>
+            <div className="col">
+                <div className="card">
+                    <div className="card-body">
+                        <ItemList/>
+                    </div>
                 </div>
             </div>
             <div className="col">
@@ -16,6 +18,13 @@ class Home extends Component {
                     <div className="card-body">
                         <QuantityInput/>
                         <QuantityInput/>
+                    </div>
+                </div>
+            </div>
+            <div className="col">
+                <div className="card">
+                    <div className="card-body">
+                        
                     </div>
                 </div>
             </div>
