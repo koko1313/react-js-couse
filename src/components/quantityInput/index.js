@@ -21,12 +21,22 @@ class QuantityInput extends Component {
         });
     }
 
+    getInputClassName = () => {
+        if(this.state.quantity < 3) {
+            return 'border-danger text-danger';
+        }
+        if(this.state.quantity > 7) {
+            return 'border-success text-success';
+        }
+        return '';
+    }
+
     render() {
         return <div className="input-group mb-2">
             <div className="input-group-prepend">
                 <button className="btn btn-outline-success" type="button" onClick={this.decrementQuantity}><i className="fa fa-minus"></i></button>
             </div>
-            <input readOnly type="text" className="form-control text-center" value={this.state.quantity}/>
+            <input readOnly type="text" className={"form-control text-center " + this.getInputClassName()} value={this.state.quantity}/>
             <div className="input-group-append">
                 <button className="btn btn-outline-success" type="button" onClick={this.incrementQuantity}><i className="fa fa-plus"></i></button>
             </div>
