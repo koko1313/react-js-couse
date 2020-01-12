@@ -2,14 +2,14 @@ import React, {Component} from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as actions from "../redux/actions";
-class ReduxComponent extends Component {
+class Movies extends Component {
 
     componentDidMount() {
         this.props.getMovies();
     }
 
     toggleFavotiteMovie = (movie) => {
-        const movieIndex = this.props.favoriteMovies.indexOf(movie);
+        const movieIndex = this.props.favoriteMovies.findIndex(element => element.id === movie.id);
 
         if(movieIndex !== -1) {
             this.props.removeFavoriteMovie(movieIndex);
@@ -19,7 +19,7 @@ class ReduxComponent extends Component {
     }
 
     getActiveClass = (movie) => {
-        if(this.props.favoriteMovies.indexOf(movie) !== -1) {
+        if(this.props.favoriteMovies.findIndex(element => element.id === movie.id) !== -1) {
             return "active";
         }
         return "";
@@ -65,4 +65,4 @@ const mapStateToDispatch = dispatch => {
     }, dispatch)
 };
 
-export default connect(mapStateToProps, mapStateToDispatch)(ReduxComponent);
+export default connect(mapStateToProps, mapStateToDispatch)(Movies);
