@@ -8,10 +8,20 @@ class ReduxComponent extends Component {
         this.props.getMovies();
     }
 
+    getMoviesList = () => {
+        const movieList = this.props.movies.map((movie, index) => {
+            return <li className="list-group-item d-flex justify-content-between" key={movie.id}>
+                {movie.title}
+                <span>{movie.releaseYear}</span>
+            </li>
+        });
+        return movieList;
+    }
+
     render() {
-        return <div className="alert alert-success">
-            <i className="fa fa-cube mr-3"></i>Redux Component Example
-        </div>
+        return <ul className="list-group">
+            {this.getMoviesList()}
+        </ul>
     }
 }
 const mapStateToProps = state => {
