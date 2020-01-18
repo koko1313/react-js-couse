@@ -33,11 +33,20 @@ export function setMdMovies (movies) {
     return {type: types.MD_SET_MOVIES, payload: movies}
 }
 
+export function setCurrentPage (page) {
+    return {type: types.SET_CURRENT_PAGE, payload: page}
+}
+
+export function setTotalPages (pages) {
+    return {type: types.SET_TOTAL_PAGES, payload: pages}
+}
+
 export const getMdTopRatedMovies = () => async dispatch => {
 
     try {
         const response = await networkClient.get("movie/top_rated");
         dispatch(setMdMovies(response.results));
+        dispatch(setTotalPages(response.total_pages));
     } catch(ex) {
         dispatch(setError({message: 'There was an error!'}))
     }
@@ -55,6 +64,19 @@ export const getMovieDetails = (movieId) => async dispatch => {
     try {
         const response = await networkClient.get(`movie/${movieId}`);
         dispatch(setMovieDetails(response));
+    } catch(ex) {
+        dispatch(setError({message: 'There was an error!'}))
+    }
+
+};
+
+export const getMdDiscoverMovies = (params) => async dispatch => {
+
+    try {
+        const response = await networkClient.get("discover/movie", params);
+        dispatch(setMdMovies(response.results));
+        dispatch(setCurrentPage(response.page));
+        dispatch(setTotalPages(response.total_pages));
     } catch(ex) {
         dispatch(setError({message: 'There was an error!'}))
     }

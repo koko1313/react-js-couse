@@ -16,7 +16,7 @@ class SingleMovie extends Component {
                     <img className="movie-image" alt="" src={constants.basePosterURL + this.props.poster_path}/>
                     <div className="p-3">
                         <h4>{this.props.title}</h4>
-                        <p className="text-muted">{moment(this.props.release_date).format("MMMM Do, YYYY")}</p>
+                        <p className="text-muted">{moment(this.props.releaseDate).format("MMMM Do, YYYY")}</p>
                         <div className="mt-3 movie-description">
                             {this.props.overview}    
                         </div>
