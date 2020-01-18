@@ -5,6 +5,7 @@ import Movies from './components/Movies';
 import Header from './components/header/Header';
 import Home from './pages/Home';
 import Favorite from './pages/Favorite';
+import MovieList from './pages/MovieList';
 
 import { createStore, applyMiddleware } from "redux";
 import { Provider }  from "react-redux";
@@ -36,6 +37,7 @@ const routes = [
         main: () => <Layout>
             <Home/>
         </Layout>
+        // <Home/> после го взимаме с props.children
     },
     {
         path: '/gallery',
@@ -49,6 +51,13 @@ const routes = [
         exact: false,
         main: () => <Layout>
             <Favorite/>
+        </Layout>
+    },
+    {
+        path: '/popularmovies',
+        exact: true,
+        main: () => <Layout>
+            <MovieList/>
         </Layout>
     }
 ];
