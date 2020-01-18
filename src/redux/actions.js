@@ -43,3 +43,20 @@ export const getMdTopRatedMovies = () => async dispatch => {
     }
 
 };
+
+// функцията, която записва резултата
+export function setMovieDetails(movie) {
+    return {type: types.SET_MOVIE_DETAILS, payload: movie}
+}
+
+// функцията, която прочита резултата
+export const getMovieDetails = (movieId) => async dispatch => {
+
+    try {
+        const response = await networkClient.get(`movie/${movieId}`);
+        dispatch(setMovieDetails(response));
+    } catch(ex) {
+        dispatch(setError({message: 'There was an error!'}))
+    }
+
+};

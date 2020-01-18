@@ -51,5 +51,16 @@ function movieDatabaseMovies(state = [], action) {
     }
 }
 
+function movieDetails(state = {}, action) {
+    switch (action.type) {
+        case types.SET_MOVIE_DETAILS: {
+            return {...action.payload};
+        }
 
-export default combineReducers({movies, favoriteMovies, error, movieDatabaseMovies});
+        default:
+            return state;
+    }
+}
+
+
+export default combineReducers({movies, favoriteMovies, error, movieDatabaseMovies, movieDetails});

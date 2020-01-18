@@ -6,6 +6,7 @@ import Header from './components/header/Header';
 import Home from './pages/Home';
 import Favorite from './pages/Favorite';
 import MovieList from './pages/MovieList';
+import MovieDetails from './pages/MovieDetails';
 
 import { createStore, applyMiddleware } from "redux";
 import { Provider }  from "react-redux";
@@ -59,7 +60,14 @@ const routes = [
         main: () => <Layout>
             <MovieList/>
         </Layout>
-    }
+    },
+    {
+        path: '/moviedetails/:id',
+        exact: false,
+        main: () => <Layout>
+            <MovieDetails/>
+        </Layout>
+    },
 ];
 
 const getRoutes = () => {
