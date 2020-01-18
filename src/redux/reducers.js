@@ -38,4 +38,18 @@ function error(state = {}, action) {
 }
 
 
-export default combineReducers({movies, favoriteMovies, error});
+// The Movie Database connected data
+
+function movieDatabaseMovies(state = [], action) {
+    switch (action.type) {
+        case types.MD_SET_MOVIES: {
+            return [...action.payload]; // записваме (връщаме нов масив)
+        }
+
+        default:
+            return state; // текущото състояние
+    }
+}
+
+
+export default combineReducers({movies, favoriteMovies, error, movieDatabaseMovies});

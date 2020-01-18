@@ -27,3 +27,21 @@ export const getMovies = () => async dispatch => {
     }
 
 };
+
+
+// Movie Database functions
+export function setMdMovies (movies) {
+    return {type: types.MD_SET_MOVIES, payload: movies}
+}
+
+export const getMdTopRatedMovies = () => async dispatch => {
+
+    try {
+        const response = await networkClient.get(
+         "movie/top_rated");
+        dispatch(setMdMovies(response.results));
+    } catch(ex) {
+        dispatch(setError({message: 'There was an error!'}))
+    }
+
+};
