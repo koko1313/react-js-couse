@@ -38,7 +38,7 @@ class MovieList extends Component {
         this.props.getMdDiscoverMovies({
             primary_release_year: this.state.primary_release_year,
             // TODO долния ред нещо не е наред
-            currentPage: this.props.currentPage
+            page: this.props.currentPage
         });
     }
 

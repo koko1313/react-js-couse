@@ -75,7 +75,6 @@ export const getMdDiscoverMovies = (params) => async dispatch => {
     try {
         const response = await networkClient.get("discover/movie", params);
         dispatch(setMdMovies(response.results));
-        dispatch(setCurrentPage(response.page));
         dispatch(setTotalPages(response.total_pages));
     } catch(ex) {
         dispatch(setError({message: 'There was an error!'}))
