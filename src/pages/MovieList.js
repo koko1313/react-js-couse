@@ -10,13 +10,6 @@ class MovieList extends Component {
     componentDidMount(){
         this.props.getMdTopRatedMovies();
     }
-    // this.props.movieDatabaseMovies
-    //TODO 
-    // 1. write a function that will return component SingleMovie for each
-    // element in this.props.movieDatabaseMovies
-
-    // 2. Refactor SingleMovie to consume dynamic props:
-    // title, poster_path, release_date, overview, id, ...
 
     getMovieList = () => {
         const movieList = this.props.movieDatabaseMovies.map((movie) => {

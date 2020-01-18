@@ -19,8 +19,7 @@ export function removeFavoriteMovie(index) {
 export const getMovies = () => async dispatch => {
 
     try {
-        const res = await networkClient.get(
-            "https://facebook.github.io/react-native/movies.json");
+        const res = await networkClient.get("https://facebook.github.io/react-native/movies.json");
         dispatch(setMovies(res.movies));
     } catch(ex) {
         dispatch(setError({message: 'There was an error!'}))
@@ -37,8 +36,7 @@ export function setMdMovies (movies) {
 export const getMdTopRatedMovies = () => async dispatch => {
 
     try {
-        const response = await networkClient.get(
-         "movie/top_rated");
+        const response = await networkClient.get("movie/top_rated");
         dispatch(setMdMovies(response.results));
     } catch(ex) {
         dispatch(setError({message: 'There was an error!'}))
