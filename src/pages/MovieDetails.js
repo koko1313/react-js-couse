@@ -4,6 +4,8 @@ import {withRouter} from "react-router-dom";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as actions from "../redux/actions";
+import constants from "../constants";
+import moment from "moment";
 
 class MovieDetails extends Component {
 
@@ -17,7 +19,16 @@ class MovieDetails extends Component {
             <div className="col">
                 <div className="card">
                     <div className="card-body">
-                        {this.props.movieDetails.title}
+                        <div className="row">
+                            <div className="col-md-4">
+                                <img className="img-fluid" src={constants.basePosterURL + this.props.movieDetails.poster_path} alt="" />
+                            </div>
+                            <div className="col">
+                                <h1>{this.props.movieDetails.title}</h1>
+                                <p>{moment(this.props.movieDetails.release_date).format("MMMM Do, YYYY")}</p>
+                                <p>{this.props.movieDetails.overview}</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
