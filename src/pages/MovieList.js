@@ -33,7 +33,9 @@ class MovieList extends Component {
 
 const mapStateToProps = state => {
     return {
-        movieDatabaseMovies: state.movieDatabaseMovies, // в props ще бъде в props.movieDatabaseMovies
+        // в props.movieDatabaseMovies ще се запише резултата
+        // state.movieDatabaseMovies е функцията от reducers, която извикваме
+        movieDatabaseMovies: state.movieDatabaseMovies,
     }
 };
 
