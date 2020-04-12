@@ -12,6 +12,17 @@ function movies(state = [], action) {
     }
 }
 
+function games(state = [], action) {
+    switch (action.type) {
+        case types.SET_GAMES: {
+            return [...action.payload];
+        }
+
+        default:
+            return state;
+    }
+}
+
 function favoriteMovies(state = [], action) {
     switch (action.type) {
         case types.ADD_FAVORITE_MOVIE: {

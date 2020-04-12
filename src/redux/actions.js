@@ -4,6 +4,11 @@ import networkClient from '../network/network-client';
 export function setMovies (movies) {
     return {type: types.SET_MOVIES, payload: movies}
 }
+
+export function setGames (games) {
+    return {type: types.SET_GAMES, payload: games}
+}
+
 export function setError (error) {
     return { type: types.SET_ERROR, payload: error };
 }
