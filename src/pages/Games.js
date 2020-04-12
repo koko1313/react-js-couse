@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import * as actions from "../redux/actions";
+import CreateGame from "../components/AddGame";
 
 class Games extends Component {
 
@@ -11,12 +12,15 @@ class Games extends Component {
 
     renderGames = () => {
         const gamesList = this.props.games.map(game => {
-            return <div className="col-md-3">
-                <div key={game._id} className="card">
-                    <img src={game.imageUrl} className="card-img-top" />
+            return <div key={game._id} className="col-md-4">
+                <div className="card">
+                    <img src={game.imageUrl} className="card-img-top" alt={game.name} />
                     <div className="card-body">
                         <h5 className="card-title">{game.name}</h5>
-                        <p className="card-text">{game.description}</p>
+                        <div className="card-text">
+                            <p>{game.description}</p>
+                            <p>Price: {game.price}</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -27,7 +31,14 @@ class Games extends Component {
 
     render() {
         return <div className="row"> 
-            {this.renderGames()}
+            <div className="col-md-3">
+                <CreateGame />
+            </div>
+            <div className="col-md">
+                <div className="row">
+                    {this.renderGames()}
+                </div>
+            </div>
         </div>;
     }
 }

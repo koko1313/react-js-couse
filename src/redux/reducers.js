@@ -17,6 +17,11 @@ function games(state = [], action) {
         case types.SET_GAMES: {
             return [...action.payload];
         }
+        case types.ADD_GAME: {
+            const currentGames = state.slice();
+            currentGames.push(action.payload);
+            return [...currentGames];
+        }
 
         default:
             return state;

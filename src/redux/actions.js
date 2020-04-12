@@ -45,6 +45,21 @@ export const getGames = (responseFields = "_id") => async dispatch => {
 
 };
 
+export function addGameToStore (game) {
+    return {type: types.ADD_GAME, payload: game}
+}
+
+export const addGame = (variables, responseFields = "_id") => async dispatch => {
+    
+    try {
+        const response = await graphQLService.addGame(variables, responseFields);
+        dispatch(addGameToStore(response.data.addGame));
+    } catch(ex) {
+        dispatch(setError({message: 'There was an error!'}))
+    }
+
+};
+
 
 // Movie Database functions
 export function setMdMovies (movies) {
