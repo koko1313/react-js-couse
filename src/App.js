@@ -4,6 +4,7 @@ import ClassComponent from './components/ClassComponent';
 import Movies from './components/Movies';
 import Header from './components/header/Header';
 import Home from './pages/Home';
+import Games from './pages/Games';
 import Favorite from './pages/Favorite';
 import MovieList from './pages/MovieList';
 import MovieDetails from './pages/MovieDetails';
@@ -39,6 +40,13 @@ const routes = [
             <Home/>
         </Layout>
         // <Home/> после го взимаме с props.children
+    },
+    {
+        path: '/games',
+        exact: true,
+        main: () => <Layout>
+            <Games/>
+        </Layout>
     },
     {
         path: '/gallery',
