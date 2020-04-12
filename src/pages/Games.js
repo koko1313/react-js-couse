@@ -9,16 +9,32 @@ class Games extends Component {
         this.props.getGames("_id name description imageUrl price");
     }
 
+    renderGames = () => {
+        const gamesList = this.props.games.map(game => {
+            return <div className="col-md-3">
+                <div key={game._id} className="card">
+                    <img src={game.imageUrl} className="card-img-top" />
+                    <div className="card-body">
+                        <h5 className="card-title">{game.name}</h5>
+                        <p className="card-text">{game.description}</p>
+                    </div>
+                </div>
+            </div>
+        });
+
+        return gamesList;
+    }
+
     render() {
-        return <div>
-            Games
-        </div>
+        return <div className="row"> 
+            {this.renderGames()}
+        </div>;
     }
 }
 
 const mapStateToProps = state => {
     return {
-        games:state.games
+        games: state.games
     }
 }
 
