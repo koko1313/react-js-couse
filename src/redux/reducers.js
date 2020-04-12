@@ -96,4 +96,4 @@ function totalPages(state = 0, action) {
 }
 
 
-export default combineReducers({movies, favoriteMovies, error, movieDatabaseMovies, movieDetails, currentPage, totalPages});
+export default combineReducers({movies, games, favoriteMovies, error, movieDatabaseMovies, movieDetails, currentPage, totalPages});

@@ -1,5 +1,6 @@
 import types from './action-types';
 import networkClient from '../network/network-client';
+import graphQLService from '../network/graphql-service';
 
 export function setMovies (movies) {
     return {type: types.SET_MOVIES, payload: movies}
@@ -26,6 +27,18 @@ export const getMovies = () => async dispatch => {
     try {
         const res = await networkClient.get("https://facebook.github.io/react-native/movies.json");
         dispatch(setMovies(res.movies));
+    } catch(ex) {
+        dispatch(setError({message: 'There was an error!'}))
+    }
+
+};
+
+
+export const getGames = (responseFields = "_id") => async dispatch => {
+
+    try {
+        const response = await graphQLService.getGames(responseFields);
+        dispatch(setGames(response.data.games));
     } catch(ex) {
         dispatch(setError({message: 'There was an error!'}))
     }
