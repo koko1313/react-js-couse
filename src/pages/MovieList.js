@@ -72,7 +72,7 @@ class MovieList extends Component {
         const pages = [];
         for(let i = 1; i < this.props.totalPages; i++) {
             pages.push(
-                <li key={i} className="page-item"><a className="page-link" href="#" onClick={() => this.setSelectedPage(i)}>{i}</a></li>
+                <li key={i} className="page-item"><span className="page-link" href="#" onClick={() => this.setSelectedPage(i)}>{i}</span></li>
             );
         }
         return pages
@@ -84,7 +84,7 @@ class MovieList extends Component {
         return <>
             <div className="row mb-5">
                 <div className="col">
-                    <ul class="pagination">
+                    <ul className="pagination">
                         {this.getPages()}
                     </ul>
                 </div>
