@@ -3,6 +3,7 @@ import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import * as actions from "../redux/actions";
 import CreateGame from "../components/AddGame";
+import Game from "../components/games/Game";
 
 class Games extends Component {
 
@@ -12,20 +13,8 @@ class Games extends Component {
 
     renderGames = () => {
         const gamesList = this.props.games.map(game => {
-            return <div key={game._id} className="col-md-4">
-                <div className="card">
-                    <img src={game.imageUrl} className="card-img-top" alt={game.name} />
-                    <div className="card-body">
-                        <h5 className="card-title">{game.name}</h5>
-                        <div className="card-text">
-                            <p>{game.description}</p>
-                            <p>Price: {game.price}</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        });
-
+            return <Game key={game._id} game={game}/>
+        })
         return gamesList;
     }
 
