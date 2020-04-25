@@ -6,6 +6,7 @@ import Games from './pages/Games';
 import Favorite from './pages/Favorite';
 import MovieList from './pages/MovieList';
 import MovieDetails from './pages/MovieDetails';
+import Profile from './pages/Profile';
 
 import { createStore, applyMiddleware } from "redux";
 import { Provider }  from "react-redux";
@@ -72,6 +73,13 @@ const routes = [
         exact: false,
         main: () => <Layout>
             <MovieDetails/>
+        </Layout>
+    },
+    {
+        path: '/profile',
+        exact: false,
+        main: () => <Layout>
+            <Profile/>
         </Layout>
     },
 ];

@@ -125,5 +125,26 @@ function graphQLErrors(state = [], action) {
     }
 }
 
+function currentUser(state = {}, action) {
+    switch (action.type) {
+        case types.SET_USER: {
+            return {...action.payload};
+        }
+        default:
+            return state;
+    }
+}
 
-export default combineReducers({movies, games, favoriteMovies, error, movieDatabaseMovies, movieDetails, currentPage, totalPages, token, graphQLErrors});
+export default combineReducers({
+    movies, 
+    games, 
+    favoriteMovies, 
+    error, 
+    movieDatabaseMovies, 
+    movieDetails, 
+    currentPage, 
+    totalPages, 
+    token, 
+    graphQLErrors,
+    currentUser,
+});

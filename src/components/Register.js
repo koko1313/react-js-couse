@@ -5,16 +5,15 @@ import RegisterForm from './RegisterForm';
 const Register = (props) => {
   const {
     buttonLabel,
-    className
   } = props;
 
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
 
   return (
-    <div>
-      <Button color="success" onClick={toggle}>{buttonLabel}</Button>
-      <Modal isOpen={modal} toggle={toggle} className={className}>
+    <div className="d-flex align-items-center ml-2">
+      <Button color="success" onClick={toggle} className="btn-sm">{buttonLabel}</Button>
+      <Modal isOpen={modal} toggle={toggle}>
         <ModalHeader toggle={toggle}>Register User</ModalHeader>
         <ModalBody>
             <RegisterForm/>
