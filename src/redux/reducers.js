@@ -103,5 +103,27 @@ function totalPages(state = 0, action) {
     }
 }
 
+function token(state = localStorage.getItem('token') ? localStorage.getItem('token') : '', action) {
+    switch (action.type) {
+        case types.SAVE_TOKEN: {
+            localStorage.setItem('token', action.payload);
+            return action.payload
+        }
+        default:
+            return state;
+    }
+}
 
-export default combineReducers({movies, games, favoriteMovies, error, movieDatabaseMovies, movieDetails, currentPage, totalPages});
+
+function graphQLErrors(state = [], action) {
+    switch (action.type) {
+        case types.ADD_GRAPHQL_ERROR: {
+            return [...state, action.payload]
+        }
+        default:
+            return state;
+    }
+}
+
+
+export default combineReducers({movies, games, favoriteMovies, error, movieDatabaseMovies, movieDetails, currentPage, totalPages, token, graphQLErrors});

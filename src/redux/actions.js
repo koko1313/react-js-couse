@@ -136,3 +136,21 @@ export const getMdDiscoverMovies = (params) => async dispatch => {
     }
 
 };
+
+export const addUser = variables => async dispatch => {
+    try {
+        const response = await graphQLService.addUser(variables);
+        dispatch(saveToken(response.data.addUser));
+    } catch(e){
+        console.log(e);
+        dispatch(setGraphQLError({request: "addUser", errors: []}))
+    }
+}
+
+export function saveToken(token){
+    return {type: types.SAVE_TOKEN, payload: token}
+}
+
+export function setGraphQLError (error) {
+    return { type: types.ADD_GRAPHQL_ERROR, payload: error };
+}
